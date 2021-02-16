@@ -3,7 +3,8 @@
 
 #include <stdlib.h>		// for malloc, calloc, free, memcpy, bzero, integer typedefs
 #include <stdio.h>		// for FILE*
-
+#include <cstdint>              // for integer typedefs within c++
+#include <cstring>              // for memcpy and memset in c++
 struct GifPalette
 {
 	int bitDepth;
