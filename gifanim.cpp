@@ -353,7 +353,7 @@ void GifAnim::GifMakePalette( const uint8_t* lastFrame, const uint8_t* nextFrame
 	// --------------------------------------------------------------
 	size_t imageSize = (size_t)(width * height * 4 * sizeof(uint8_t));
 	uint8_t* destroyableImage = (uint8_t*)GIF_TEMP_MALLOC(imageSize);
-	memcpy(destroyableImage, nextFrame, imageSize);
+	std::memcpy(destroyableImage, nextFrame, imageSize);
 
 	int numPixels = (int)(width * height);
 	if(lastFrame)
@@ -694,7 +694,7 @@ void GifAnim::GifWriteLzwImage(FILE* f, uint8_t* image, uint32_t left, uint32_t 
 
 	GifLzwNode* codetree = (GifLzwNode*)GIF_TEMP_MALLOC(sizeof(GifLzwNode)*4096);
 
-	memset(codetree, 0, sizeof(GifLzwNode)*4096);
+	std::memset(codetree, 0, sizeof(GifLzwNode)*4096);
 	int32_t curCode = -1;
 	uint32_t codeSize = (uint32_t)minCodeSize + 1;
 	uint32_t maxCode = clearCode+1;
@@ -753,7 +753,7 @@ void GifAnim::GifWriteLzwImage(FILE* f, uint8_t* image, uint32_t left, uint32_t 
 					// ---------------------------------------------------
 					GifWriteCode(f, stat, clearCode, codeSize); // clear tree
 
-					memset(codetree, 0, sizeof(GifLzwNode)*4096);
+					std::memset(codetree, 0, sizeof(GifLzwNode)*4096);
 					codeSize = (uint32_t)(minCodeSize + 1);
 					maxCode = clearCode+1;
 				}
